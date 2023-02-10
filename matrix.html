@@ -1,0 +1,344 @@
+<html>
+	<head>
+		<title>Matrix Operation</title>
+		
+		<style>
+			fieldset{
+				display: inline-block;
+				margin: auto 30px;
+                border-radius: 10px;
+                font-size: medium;
+                background-color: rgb(252, 206, 179);
+			}
+            input{
+                width: 150px;
+                height: 25px;
+                font-size: medium;
+                font-weight: bold;
+            }
+            legend{
+                background-color: rgb(255, 210, 193);
+                padding: 5px 10px;
+                border-square: 10px;
+            }
+            textarea{
+                border-radius: 10px;
+                font-size: medium;
+                background-color: rgb(252, 255, 214);
+            }
+            button{
+                background-color: rgb(231, 255, 160);
+                height: 50px;
+                width: 100px;
+                border-square: 50px;
+            }
+            body{
+                background-color: white;
+            }
+            #err{
+                color: aliceblue;
+            }
+		</style>
+	</head>
+
+	<body>
+		
+		<div align="center">
+            <h1 style="color:aliceblue;">Matrix Operation</h1>
+            <br>
+			<fieldset>
+				<legend>Input Matrix A</legend>
+				ROW: <input id="row1" type="text" /> <br /><br />
+				COL: <input id="col1" type="text" /> <br /><br />
+				<textarea id="inputA" rows="10" cols="25"></textarea>
+			</fieldset>
+
+			<fieldset>
+				<legend>Input Matrix B</legend>
+					ROW: <input id="row2" type="text" /> <br /><br />
+					COL: <input id="col2" type="text" /> <br /><br />
+				<textarea id="inputB" rows="10" cols="25"></textarea>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Result</legend>
+				<textarea id="result" rows="10" cols="25"></textarea>
+			</fieldset>
+		
+		<div>
+            <br> 
+			<button onclick="add()">Addition</button>
+			
+			<button onclick="sub()">Subtraction</button>
+			
+			<button onclick="mul()">Multiplication</button>
+		</div>
+		
+		<div>
+			<p id="err"></p>
+		</div>
+
+        </div>
+	</body>
+	
+	
+	<script>
+		function add() {
+			let err = document.getElementById("err");
+			
+			let row1 = parseInt(document.getElementById("row1").value);
+			let col1 = parseInt(document.getElementById("col1").value);
+			
+			let row2 = parseInt(document.getElementById("row2").value);
+			let col2 = parseInt(document.getElementById("col2").value);
+			
+			if(row1!=row2 || col1!=col2) {
+				err.innerHTML = "Row and column are not matching"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			let elements = parseInt(row1*col1);
+			
+			let inputA = document.getElementById("inputA").value;
+			let inputB = document.getElementById("inputB").value;
+			let result = document.getElementById("result");
+				
+			inputA = inputA.split(/[\s, ]+/);
+			console.log(inputA);
+			
+			inputB = inputB.split(/[\s, ]+/);
+			console.log(inputB);
+			
+			console.log(inputA.length + " " + inputB.length + " " + row1*col1);
+			if(inputA.length!=row1*col1 || inputB.length!=row2*col2) {
+				err.innerHTML = "Elements are either more or less than requirement"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			
+			let mat1 = new Array(row1)
+			let mat2 = new Array(row2)
+			let res = new Array(row1)
+			
+			for(var i=0;i<row1;i++) {
+				mat1[i] = []
+				mat2[i] = []
+				res[i] = []
+			}
+			
+			var k = 0;
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col1;j++) {
+					mat1[i][j] = parseInt(inputA[k])
+					mat2[i][j] = parseInt(inputB[k])
+					res[i][j] = mat1[i][j]+mat2[i][j]
+					k++;
+				}
+			}
+			
+			
+			k = 0;
+			let str = "";
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col1;j++) {
+					str = str + res[i][j] + " "
+					console.log(res[i][j])
+				}
+				str+="\n"
+			}
+			
+			result.value = str
+		}
+		
+		
+		function sub() {
+			let err = document.getElementById("err");
+			
+			let row1 = parseInt(document.getElementById("row1").value);
+			let col1 = parseInt(document.getElementById("col1").value);
+			
+			let row2 = parseInt(document.getElementById("row2").value);
+			let col2 = parseInt(document.getElementById("col2").value);
+			
+			if(row1!=row2 || col1!=col2) {
+				err.innerHTML = "Row and column are not matching"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			let elements = parseInt(row1*col1);
+			
+			let inputA = document.getElementById("inputA").value;
+			let inputB = document.getElementById("inputB").value;
+			let result = document.getElementById("result");
+				
+			inputA = inputA.split(/[\s, ]+/);
+			console.log(inputA);
+			
+			inputB = inputB.split(/[\s, ]+/);
+			console.log(inputB);
+			
+			console.log(inputA.length + " " + inputB.length + " " + row1*col1);
+			if(inputA.length!=row1*col1 || inputB.length!=row2*col2) {
+				err.innerHTML = "Elements are either more or less than requirement"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			
+			let mat1 = new Array(row1)
+			let mat2 = new Array(row2)
+			let res = new Array(row1)
+			
+			for(var i=0;i<row1;i++) {
+				mat1[i] = []
+				mat2[i] = []
+				res[i] = []
+			}
+			
+			var k = 0;
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col1;j++) {
+					mat1[i][j] = parseInt(inputA[k])
+					mat2[i][j] = parseInt(inputB[k])
+					res[i][j] = mat1[i][j]-mat2[i][j]
+					k++;
+				}
+			}
+			
+			
+			k = 0;
+			let str = "";
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col1;j++) {
+					str = str + res[i][j] + " "
+					console.log(res[i][j])
+				}
+				str+="\n"
+			}
+			
+			result.value = str
+		}
+		
+		
+		function mul() {
+			let err = document.getElementById("err");
+			
+			let row1 = parseInt(document.getElementById("row1").value);
+			let col1 = parseInt(document.getElementById("col1").value);
+			
+			let row2 = parseInt(document.getElementById("row2").value);
+			let col2 = parseInt(document.getElementById("col2").value);
+			
+			if(row1!=col2 || col1!=row2) {
+				err.innerHTML = "Matrix multiplication not possible"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			let elements = parseInt(row1*col1);
+			
+			let inputA = document.getElementById("inputA").value;
+			let inputB = document.getElementById("inputB").value;
+			let result = document.getElementById("result");
+				
+			inputA = inputA.split(/[\s, ]+/);
+			console.log(inputA);
+			
+			inputB = inputB.split(/[\s, ]+/);
+			console.log(inputB);
+			
+			console.log(inputA.length + " " + inputB.length + " " + row1*col1);
+			if(inputA.length!=row1*col1 || inputB.length!=row2*col2) {
+				err.innerHTML = "Elements are either more or less than requirement"
+				return
+			} else {
+				err.innerHTML = ""
+			}
+			
+			
+			let mat1 = new Array(row1)
+			let mat2 = new Array(row2)
+			let res = new Array(row1)
+			
+			for(var i=0;i<row1;i++) {
+				mat1[i] = []
+				mat2[i] = []
+				res[i] = []
+			}
+			
+			var k = 0;
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col1;j++) {
+					mat1[i][j] = parseInt(inputA[k])
+					k++;
+				}
+			}
+			
+			k = 0;
+			for(var i=0;i<row2;i++) {
+				for(var j=0;j<col2;j++) {
+					mat2[i][j] = parseInt(inputB[k])
+					k++;
+				}
+			}
+			
+			
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col2;j++) {
+					res[i][j] = 0
+				}
+			}
+			
+			
+			k=0;
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col2;j++) {
+					for(k=0;k<col1;k++) {
+						res[i][j]+=mat1[i][k]*mat2[k][j];
+					}
+				}
+			}
+			
+			
+			k = 0;
+			let str = "";
+			for(var i=0;i<row1;i++) {
+				for(var j=0;j<col2;j++) {
+					str = str + res[i][j] + " "
+					console.log(res[i][j])
+				}
+				str+="\n"
+			}
+			
+			result.value = str
+		}
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

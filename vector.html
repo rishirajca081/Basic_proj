@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vector</title>
+    <style>
+        .int {
+            width: 30px;
+            height: 30px;
+            font-size: large;
+            font-weight: bold;
+        }
+        label{
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center" style=" background-color:white;">Vector Operation</h1>
+    <h3>Input first vector(ai+bj+ck)</h3>
+    <form>
+    <input class="int" name="firstV" id="firstI" type="text">
+    <label for="firstV">i</label>
+    <input class="int" name="firstV" id="firstJ" type="text">
+    <label for="firstV">j</label>
+    <input class="int" name="firstV" id="firstK" type="text">
+    <label for="firstV">k</label>
+
+    <h3>Input scond vector(ai+bj+ck)</h3>
+    <input class="int" name="secondV" id="secondI" type="text">
+    <label for="firstV">i</label>
+    <input class="int" name="secondV" id="secondJ" type="text">
+    <label for="firstV">j</label>
+    <input class="int" name="secondV" id="secondK" type="text">
+    <label for="firstV">k</label>
+    <h3></h3>
+    <label for="clear">Reset: </label>
+    <button style="width: 100px; height: 20px; background-color: white;" type="reset"> Reset</button>
+    </form>
+    <h3> </h3>
+    <button onclick="Add()" style=" width: 200px; height: 50px; background-color: rgb(255, 255, 255);"> Addition
+            Operations</button>
+    <button onclick="Sub()" style=" width: 200px; height: 50px; background-color: rgb(255, 255, 255);"> Subtraction
+            Operations</button>
+    <button onclick="Dot()" style=" width: 200px; height: 50px; background-color: rgb(255, 255, 255);"> Dot Product </button>
+    <h2>Result</h2>
+    <h3 id="output"></h3>
+</body>
+
+<script>
+    function Add(){
+        let a1 = parseInt(document.getElementById("firstI").value);
+        let b1 = parseInt(document.getElementById("firstJ").value);
+        let c1 = parseInt(document.getElementById("firstK").value);
+
+        let a2 = parseInt(document.getElementById("secondI").value);
+        let b2 = parseInt(document.getElementById("secondJ").value);
+        let c2 = parseInt(document.getElementById("secondK").value);
+        let a = a1 + a2;
+        let b = b1 + b2;
+        let c = c1 + c2;
+        document.getElementById("output").innerHTML = ((a >= 0) ? (a) : a) + "i" + ((b >= 0) ? ("+" + b) : b) + "j" + ((c >= 0) ? ("+" + c) : c) + "k";
+    
+    }
+
+    function Sub(){
+        let a1 = parseInt(document.getElementById("firstI").value);
+        let b1 = parseInt(document.getElementById("firstJ").value);
+        let c1 = parseInt(document.getElementById("firstK").value);
+
+        let a2 = parseInt(document.getElementById("secondI").value);
+        let b2 = parseInt(document.getElementById("secondJ").value);
+        let c2 = parseInt(document.getElementById("secondK").value);
+        let a = a1 - a2;
+        let b = b1 - b2;
+        let c = c1 - c2;
+        document.getElementById("output").innerHTML = ((a >= 0) ? (a) : a) + "i" + ((b >= 0) ? ("+" + b) : b) + "j" + ((c >= 0) ? ("+" + c) : c) + "k";
+    
+    }
+
+    function Dot(){
+        let a1 = parseInt(document.getElementById("firstI").value);
+        let b1 = parseInt(document.getElementById("firstJ").value);
+        let c1 = parseInt(document.getElementById("firstK").value);
+
+        let a2 = parseInt(document.getElementById("secondI").value);
+        let b2 = parseInt(document.getElementById("secondJ").value);
+        let c2 = parseInt(document.getElementById("secondK").value);
+
+        let a = a1 * a2;
+        let b = b1 * b2;
+        let c = c1 * c2;
+        document.getElementById("output").innerHTML = (a + b + c);
+    
+    }
+
+</script>
+
+</html>
